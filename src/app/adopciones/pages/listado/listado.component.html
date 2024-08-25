@@ -1,0 +1,69 @@
+<div class="listado-container">
+  <mat-card class="main-card">
+    <mat-card-header>
+      <mat-card-title>Lista de Adopciones</mat-card-title>
+      <mat-card-subtitle>
+        <button mat-button color="warn" class="logout-button" (click)="logout()">
+          <mat-icon>exit_to_app</mat-icon>
+          Cerrar Sesión
+        </button>
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-table [dataSource]="adopciones" class="adopciones-table">
+      <ng-container matColumnDef="imagen">
+        <mat-header-cell *matHeaderCellDef> Logo </mat-header-cell>
+        <mat-cell *matCellDef="let adopcion">
+          <img src="..//../../../assets/logo.jpg" class="table-image"/>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="nombre">
+        <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+        <mat-cell *matCellDef="let adopcion"> {{ adopcion.nombre }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="categoria">
+        <mat-header-cell *matHeaderCellDef> Categoría </mat-header-cell>
+        <mat-cell *matCellDef="let adopcion"> {{ adopcion.categoria }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="ubicacion">
+        <mat-header-cell *matHeaderCellDef> Ubicación </mat-header-cell>
+        <mat-cell *matCellDef="let adopcion"> {{ adopcion.ubicacion }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="peso">
+        <mat-header-cell *matHeaderCellDef> Peso </mat-header-cell>
+        <mat-cell *matCellDef="let adopcion"> {{ adopcion.peso }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="acciones">
+        <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+        <mat-cell *matCellDef="let adopcion">
+          <a mat-button [routerLink]="['/adopcion', adopcion._id]" class="action-button">
+            <mat-icon>info</mat-icon>
+            Detalles
+          </a>
+          <button mat-button *ngIf="isAdmin" (click)="deleteAdopcion(adopcion._id!)" class="action-button">
+            <mat-icon>delete</mat-icon>
+            Eliminar
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="['imagen', 'nombre', 'categoria', 'ubicacion', 'peso', 'acciones']"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: ['imagen', 'nombre', 'categoria', 'ubicacion', 'peso', 'acciones'];"></mat-row>
+    </mat-table>
+
+    <mat-card-content>
+      <h2 class="gallery-title">Galería de nuestras mascotas</h2>
+      <div class="image-gallery">
+        <img *ngFor="let image of filteredImages" [src]="image" alt="Mascota" class="dog-image">
+      </div>
+      <div class="button-container">
+        <button mat-raised-button color="accent" (click)="loadMoreImages()">Cargar más mascotas</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

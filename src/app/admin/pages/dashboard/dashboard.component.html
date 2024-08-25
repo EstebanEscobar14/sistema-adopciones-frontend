@@ -1,0 +1,73 @@
+<div class="dashboard-container">
+  <mat-card class="main-card">
+    <mat-card-header>
+      <mat-card-title>Lista de Adopciones</mat-card-title>
+      <mat-card-subtitle>
+        <button mat-button color="warn" class="logout-button" (click)="logout()">
+          <mat-icon>exit_to_app</mat-icon>
+          Cerrar Sesión
+        </button>
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <div class="table-container">
+      <mat-table [dataSource]="adopciones" class="adopciones-table">
+        <!-- Definición de columnas -->
+        <ng-container matColumnDef="imagen">
+          <mat-header-cell *matHeaderCellDef> Logo </mat-header-cell>
+          <mat-cell *matCellDef="let adopcion">
+            <img src="../../../../assets/logo.jpg" alt="Logo" class="dog-image">
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="nombre">
+          <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+          <mat-cell *matCellDef="let adopcion"> {{ adopcion.nombre }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="categoria">
+          <mat-header-cell *matHeaderCellDef> Categoría </mat-header-cell>
+          <mat-cell *matCellDef="let adopcion"> {{ adopcion.categoria }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="ubicacion">
+          <mat-header-cell *matHeaderCellDef> Ubicación </mat-header-cell>
+          <mat-cell *matCellDef="let adopcion"> {{ adopcion.ubicacion }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="peso">
+          <mat-header-cell *matHeaderCellDef> Peso </mat-header-cell>
+          <mat-cell *matCellDef="let adopcion"> {{ adopcion.peso }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="acciones">
+          <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+          <mat-cell *matCellDef="let adopcion">
+            <a mat-button [routerLink]="['/adopcion-form', adopcion._id]" class="action-button" color="primary">
+              <mat-icon>edit</mat-icon>
+              Editar
+            </a>
+            <button mat-button color="warn" (click)="deleteAdopcion(adopcion._id!)" class="action-button">
+              <mat-icon>delete</mat-icon>
+              Eliminar
+            </button>
+            <a mat-button [routerLink]="['/adopcion', adopcion._id]" class="action-button" color="accent">
+              <mat-icon>info</mat-icon>
+              Detalles
+            </a>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="['imagen', 'nombre', 'categoria', 'ubicacion', 'peso', 'acciones']"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: ['imagen', 'nombre', 'categoria', 'ubicacion', 'peso', 'acciones']"></mat-row>
+      </mat-table>
+    </div>
+
+    <div class="actions-container">
+      <a mat-raised-button color="primary" routerLink="/adopcion-form" class="add-button">
+        <mat-icon>add</mat-icon>
+        Agregar Adopción
+      </a>
+    </div>
+  </mat-card>
+</div>

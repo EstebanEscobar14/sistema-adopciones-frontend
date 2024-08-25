@@ -1,0 +1,59 @@
+<div class="dialog-container">
+  <h2 mat-dialog-title class="dialog-title">
+    <mat-icon>calendar_today</mat-icon> Reservar Cita para Adopción
+  </h2>
+
+  <mat-dialog-content class="dialog-content">
+    <form [formGroup]="reservaForm" class="reserva-form">
+      <div class="form-field">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Nombres</mat-label>
+          <input matInput formControlName="nombres" required>
+          <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+      </div>
+
+      <div class="form-field">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Apellidos</mat-label>
+          <input matInput formControlName="apellidos" required>
+          <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+      </div>
+
+      <div class="form-field">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Edad</mat-label>
+          <input matInput formControlName="edad" type="number" required>
+          <mat-icon matSuffix>cake</mat-icon>
+        </mat-form-field>
+      </div>
+
+      <div class="form-field">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Ciudad</mat-label>
+          <input matInput formControlName="ciudad" required>
+          <mat-icon matSuffix>location_city</mat-icon>
+        </mat-form-field>
+      </div>
+
+      <div class="form-field">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Fecha para visita</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="fechaVisita" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </form>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end" class="dialog-actions">
+    <button mat-button (click)="onCancel()" class="cancel-button">
+      <mat-icon>close</mat-icon> Cancelar
+    </button>
+    <button mat-raised-button color="primary" (click)="crearReserva()" [disabled]="!reservaForm.valid" class="reserve-button">
+      <mat-icon>check_circle</mat-icon> Reservar Cita
+    </button>
+  </mat-dialog-actions>
+</div>

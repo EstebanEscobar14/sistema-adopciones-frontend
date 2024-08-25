@@ -1,0 +1,65 @@
+.listado-container {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.main-card {
+  width: 100%;
+  /* max-width: 1200px; */
+  padding: 16px;
+}
+
+.mat-card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.logout-button {
+  margin-left: auto;
+}
+
+.adopciones-table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.mat-header-cell, .mat-cell {
+  padding: 8px;
+  text-align: left;
+}
+
+.table-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.dog-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.image-gallery {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.gallery-title {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.button-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.action-button {
+  margin-right: 10px;
+}

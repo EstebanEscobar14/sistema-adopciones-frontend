@@ -1,0 +1,37 @@
+.adopcion-form-container {
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-fields {
+  display: flex;
+  flex-direction: column; /* Asegura que los campos se alineen verticalmente */
+  gap: 20px; /* Espacio entre los campos */
+}
+
+.mat-form-field {
+  width: 100%; /* Asegura que los campos ocupen todo el ancho disponible */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+button, a {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Espacio entre el icono y el texto */
+}

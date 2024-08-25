@@ -1,0 +1,121 @@
+<div class="detalle-container" *ngIf="adopcion">
+  <mat-card class="detalle-card">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon class="icon-info">info</mat-icon> Detalles de Adopción
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="details-info">
+        <p>
+          <mat-icon class="icon-person">person</mat-icon> <strong>Nombre: </strong>
+          {{ adopcion.nombre }}
+        </p>
+        <p>
+          <mat-icon class="icon-category">category</mat-icon> <strong>Categoría: </strong>
+          {{ adopcion.categoria }}
+        </p>
+        <p>
+          <mat-icon class="icon-location">location_on</mat-icon> <strong>Ubicación: </strong>
+          {{ adopcion.ubicacion }}
+        </p>
+        <p>
+          <mat-icon class="icon-pets">pets</mat-icon> <strong>Peso: </strong>
+          {{ adopcion.peso }} kg
+        </p>
+        <p>
+          <mat-icon class="icon-calendar">calendar_today</mat-icon>
+          <strong>Fecha de Creación: </strong>
+          {{ adopcion.fechaCreacion | date }}
+        </p>
+      </div>
+
+      <h2>Reservas para adoptar a {{ adopcion.nombre }}</h2>
+      <div class="reservas-table-container">
+        <table mat-table [dataSource]="reservas" class="mat-elevation-z8">
+          <ng-container matColumnDef="fecha">
+            <th mat-header-cell *matHeaderCellDef>Fecha</th>
+            <td mat-cell *matCellDef="let reserva">
+              {{ reserva.fechaVisita | date }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="nombres">
+            <th mat-header-cell *matHeaderCellDef>Nombres</th>
+            <td mat-cell *matCellDef="let reserva">{{ reserva.nombres }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="apellidos">
+            <th mat-header-cell *matHeaderCellDef>Apellidos</th>
+            <td mat-cell *matCellDef="let reserva">{{ reserva.apellidos }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="acciones">
+            <th mat-header-cell *matHeaderCellDef>Acciones</th>
+            <td mat-cell *matCellDef="let reserva">
+              <!-- Botón de eliminar para el administrador -->
+              <button
+                *ngIf="isAdmin || reserva.idUsuario === currentUserId"
+                mat-icon-button
+                color="warn"
+                (click)="deleteReserva(reserva._id)"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+          
+              <!-- Botón de editar para el usuario dueño de la reserva -->
+              <button
+                *ngIf="!isAdmin && reserva.userId === currentUserId"
+                mat-icon-button
+                color="primary"
+                (click)="openEditReservationDialog(reserva)"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+          
+          
+
+          <tr mat-header-row *matHeaderRowDef="['fecha', 'nombres', 'apellidos', 'acciones']"></tr>
+          <tr mat-row *matRowDef="let row; columns: ['fecha', 'nombres', 'apellidos', 'acciones']"></tr>
+        </table>
+      </div>
+
+      <button
+      *ngIf="!isAdmin"
+      mat-raised-button
+      color="primary"
+      [disabled]="reservaPendiente" 
+      (click)="openReservationDialog()"
+    >
+      <mat-icon class="icon-add">add</mat-icon> Reservar Cita
+    </button>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button
+        *ngIf="isAdmin"
+        mat-raised-button
+        color="warn"
+        (click)="deleteAdopcion(adopcion._id!)"
+      >
+        <mat-icon class="icon-delete">delete</mat-icon> Eliminar
+      </button>
+
+      <a
+        *ngIf="isAdmin"
+        [routerLink]="['/adopcion-form', adopcion._id]"
+        mat-raised-button
+        color="primary"
+      >
+        <mat-icon class="icon-edit">edit</mat-icon> Editar
+      </a>
+
+      <a (click)="goBack()" mat-raised-button color="accent">
+        <mat-icon class="icon-back">arrow_back</mat-icon> Regresar
+      </a>
+    </mat-card-actions>
+  </mat-card>
+</div>

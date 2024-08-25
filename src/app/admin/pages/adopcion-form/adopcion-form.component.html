@@ -1,0 +1,55 @@
+<div class="container adopcion-form-container mt-5">
+  <mat-card class="adopcion-form-container">
+    <mat-card-title>{{ isEdit ? 'Editar Adopción' : 'Agregar Nueva Adopción' }}</mat-card-title>
+
+    <form [formGroup]="adopcionForm" (ngSubmit)="onSubmit()">
+      <div class="form-fields">
+        <mat-form-field appearance="fill">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="nombre" placeholder="Ingrese el nombre" />
+          <mat-icon matPrefix>person</mat-icon>
+          <mat-error *ngIf="adopcionForm.get('nombre')?.invalid && adopcionForm.get('nombre')?.touched">
+            El nombre es requerido.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Categoría</mat-label>
+          <input matInput formControlName="categoria" placeholder="Ingrese la categoría" />
+          <mat-icon matPrefix>category</mat-icon>
+          <mat-error *ngIf="adopcionForm.get('categoria')?.invalid && adopcionForm.get('categoria')?.touched">
+            La categoría es requerida.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Ubicación</mat-label>
+          <input matInput formControlName="ubicacion" placeholder="Ingrese la ubicación" />
+          <mat-icon matPrefix>location_on</mat-icon>
+          <mat-error *ngIf="adopcionForm.get('ubicacion')?.invalid && adopcionForm.get('ubicacion')?.touched">
+            La ubicación es requerida.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Peso</mat-label>
+          <input matInput formControlName="peso" type="number" placeholder="Ingrese el peso" />
+          <mat-icon matPrefix>scale</mat-icon>
+          <mat-error *ngIf="adopcionForm.get('peso')?.invalid && adopcionForm.get('peso')?.touched">
+            El peso es requerido y debe ser un número positivo.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-actions">
+        <button mat-raised-button color="primary" type="submit">
+          <mat-icon>save</mat-icon>
+          {{ isEdit ? 'Actualizar' : 'Guardar' }}
+        </button>
+        <a mat-button routerLink="/admin">
+          <mat-icon>cancel</mat-icon>
+          Cancelar
+        </a>
+      </div>
+    </form>
+  </mat-card>
+</div>

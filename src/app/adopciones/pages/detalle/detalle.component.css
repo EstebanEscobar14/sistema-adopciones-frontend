@@ -1,0 +1,138 @@
+.detalle-container {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  background-color: #f9f9f9; /* Fondo gris claro para contraste */
+}
+
+.detalle-card {
+  width: 100%;
+  max-width: 800px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background-color: #fff; /* Fondo blanco para el card */
+}
+
+mat-card-header {
+  background: #e3f2fd; /* Fondo azul claro para el header */
+  border-bottom: 1px solid #ddd;
+}
+
+mat-card-title {
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  font-weight: 500;
+  color: #0d47a1;
+}
+
+mat-card-title mat-icon {
+  margin-right: 12px;
+  font-size: 20px;
+}
+
+.details-info {
+  margin-bottom: 20px;
+}
+
+.details-info p {
+  display: flex;
+  align-items: center;
+  margin: 12px 0;
+  font-size: 16px;
+  color: #333; /* Color gris oscuro para el texto */
+}
+
+.details-info mat-icon {
+  margin-right: 8px;
+  font-size: 20px;
+}
+
+.icon-info {
+  color: #0d47a1; /* Azul oscuro para íconos de información */
+}
+
+.icon-person {
+  color: #4caf50; /* Verde para íconos de persona */
+}
+
+.icon-category {
+  color: #ff9800; /* Naranja para íconos de categoría */
+}
+
+.icon-location {
+  color: #2196f3; /* Azul para íconos de ubicación */
+}
+
+.icon-pets {
+  color: #f44336; /* Rojo para íconos de peso */
+}
+
+.icon-calendar {
+  color: #9c27b0; /* Morado para íconos de fecha */
+}
+
+.icon-add {
+  color: #fff; /* Verde para íconos de agregar */
+}
+
+.icon-delete {
+  color: #fff; /* Rojo para íconos de eliminar */
+}
+
+.icon-edit {
+  color: #fff; /* Azul para íconos de editar */
+}
+
+.icon-back {
+  color: #fff; /* Azul grisáceo para íconos de regresar */
+}
+
+h2 {
+  font-size: 20px;
+  margin: 20px 0;
+  font-weight: 400;
+  color: #0d47a1; /* Azul oscuro para el subtítulo */
+}
+
+table {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+mat-header-cell, mat-cell {
+  padding: 12px;
+  font-size: 14px; /* Tamaño de fuente más pequeño para la tabla */
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+button, a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+mat-icon {
+  font-size: 20px;
+}
+
+.reservas-table-container {
+  max-height: 400px; /* Ajusta la altura máxima según tus necesidades */
+  overflow-y: auto;
+  margin-top: 16px;
+}
+
+table {
+  width: 100%;
+}
+
+mat-header-cell, mat-cell {
+  text-align: left;
+}
+
