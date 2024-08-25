@@ -12,7 +12,7 @@ export class AuthService {
   private apiUrl = environment.apiUrl2;
   private tokenKey = environment.jwtSecret;
   private userRoleKey = 'user-role';
-  private userIdKey = 'user-id'; // Añade una nueva clave para el ID del usuario
+  private userIdKey = 'user-id';
 
 
 

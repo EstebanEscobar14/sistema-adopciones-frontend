@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 
-const API_BASE_URL = '/api';
+const API_BASE_URL = '/api/api';
 @Component({
   selector: 'app-listado',
   templateUrl: './listado.component.html',
