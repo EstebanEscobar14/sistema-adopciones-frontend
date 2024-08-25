@@ -5,9 +5,10 @@ import { Adopcion } from '../../models/Adopcion.model';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Datum, Tipo } from '../../models/Dog.model';
 
 
-const API_BASE_URL = '/api/api';
+const API_BASE_URL = 'https://huachitos.cl/api/animales/tipo/perro';
 @Component({
   selector: 'app-listado',
   templateUrl: './listado.component.html',
@@ -18,8 +19,6 @@ export class ListadoComponent implements OnInit {
   isAdmin: boolean = false;
   images: string[] = [];
   filteredImages: string[] = [];
-  private imageBatchSize: number = 25;
-  private currentImageIndex: number = 0;
 
   constructor(
     private adopcionService: AdopcionService,
@@ -35,18 +34,13 @@ export class ListadoComponent implements OnInit {
   }
 
   loadImages() {
-    const apiUrl = `${API_BASE_URL}/breeds/image/random/${this.imageBatchSize}`;
-    // const apiUrl = `/api/api/breeds/image/random/${this.imageBatchSize}`;
+    const apiUrl = `${API_BASE_URL}`;
     this.http.get<any>(apiUrl).subscribe(data => {
-      this.images = data.message;
+      this.images = data.data
+        .filter((item: Datum) => item.tipo === Tipo.Perro) 
+        .map((item: Datum) => item.imagen);
+      
       this.filteredImages = this.images;
-    });
-  }
-
-  loadMoreImages() {
-    const apiUrl = `${API_BASE_URL}/breeds/image/random/${this.imageBatchSize}`;
-    this.http.get<any>(apiUrl).subscribe(data => {
-      this.filteredImages = [...this.filteredImages, ...data.message];
     });
   }
 
